@@ -5,16 +5,17 @@
 #include <stdio.h>
 #include <string.h>
 
-// Platform definition
+/* Platform detection */
 #if defined(__APPLE__) || defined(__MACH__)
     #define PLATFORM_MAC
 #elif defined(__linux__)
     #define PLATFORM_LINUX
 #endif
 
-// Macros's for macOS errors
+/* Error messages for macOS */
 #ifdef PLATFORM_MAC
-    #define ERROR_MESSAGES { \
+    #define ERROR_MESSAGES \
+    { \
         "Success", \
         "Operation not permitted", \
         "No such file or directory", \
@@ -54,9 +55,10 @@
     #define MAX_ERRNO 34
 #endif
 
-// Macros's for linux errors
+/* Error messages for Linux */
 #ifdef PLATFORM_LINUX
-    #define ERROR_MESSAGES { \
+    #define ERROR_MESSAGES \
+    { \
         "Success", \
         "Operation not permitted", \
         "No such file or directory", \
@@ -96,10 +98,18 @@
     #define MAX_ERRNO 34
 #endif
 
+/* Define NULL */
+#define NULL ((void *)0)
+/* Type definitions */
+typedef unsigned long size_t;
 
-
-
-
-
+/* Function declarations */
+char *strerror(int errnum);
+char *strtok(char *str, const char *delim);
+size_t strlen(const char *str);
+char *strpbrk(const char *str1, const char *str2);
+char *strrchr(const char *str, int c);
+char *strchr(const char *str, int c);
+char *strstr(const char *haystack, const char *needle);
 
 #endif
